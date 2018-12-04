@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="keywords"
+      content="Fruit Crush Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"
+    />
+    <script type="application/x-javascript">
+      addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+      	function hideURLbar(){ window.scrollTo(0,1); }
+    </script>
+    <!-- //for-mobile-apps -->
+    <link
+      href="css/bootstrap.css"
+      rel="stylesheet"
+      type="text/css"
+      media="all"
+    />
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <!-- fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="js/move-top.js"></script>
+    <script type="text/javascript" src="js/easing.js"></script>
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+        $(".scroll").click(function(event) {
+          event.preventDefault();
+          $("html,body").animate(
+            { scrollTop: $(this.hash).offset().top },
+            1000
+          );
+        });
+      });
+    </script>
+    <!-- start-smoth-scrolling -->
+  </head>
+  <body>
+    <!-- header -->
+    <div class="header-top">
+      <div class="container">
+        <div class="header-top-left">
+          <p>Autem quibusdam et aut officiis debitis</p>
+        </div>
+        <div class="header-top-mid">
+          <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+          <p>Call For Info: +0646-784-900</p>
+        </div>
+        <div class="header-top-right">
+          <ul>
+            <li><a href="#" class="f1"> </a></li>
+            <li><a href="#" class="f2"> </a></li>
+            <li><a href="#" class="f3"> </a></li>
+            <li><a href="#" class="f4"> </a></li>
+          </ul>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <!-- //header -->
+    <!-- strip -->
+    <div class="strip"></div>
+    <!-- //strip -->
+    <!-- logo -->
+    <div class="logo-head">
+      <div class="container">
+        <div class="logo">
+          <h1>
+            <a href="index.html"><img src="images/logo.png" alt=""/></a>
+          </h1>
+        </div>
+        <div class="navigation">
+          <span class="menu"><img src="images/menu.png" alt=""/></span>
+          <div class="clearfix"></div>
+          <ul class="nav1">
+            <li>
+              <a class="hvr-overline-from-center button2" href="about.html"
+                >ABOUT</a
+              >
+            </li>
+            <li>
+              <a class="hvr-overline-from-center button2" href="services.html"
+                >SERVICES</a
+              >
+            </li>
+            <li>
+              <a class="hvr-overline-from-center button2" href="blog.html"
+                >BLOG</a
+              >
+            </li>
+            <li>
+              <a class="hvr-overline-from-center button2" href="typography.html"
+                >PAGES</a
+              >
+            </li>
+            <li>
+              <a class="hvr-overline-from-center button2" href="gallery.html"
+                >GALLERY</a
+              >
+            </li>
+            <li>
+              <a class="hvr-overline-from-center button2" href="contact.html"
+                >CONTACT</a
+              >
+            </li>
+          </ul>
+          <!-- script for menu -->
+          <script>
+            $("span.menu").click(function() {
+              $("ul.nav1").slideToggle(300, function() {
+                // Animation complete.
+              });
+            });
+          </script>
+          <!-- //script for menu -->
+        </div>
+      </div>
+    </div>
+    <!-- //logo -->
+    <!-- banner -->
+    <div class="banner">
+      <div class="container">
+        <script src="js/responsiveslides.min.js"></script>
+        <script>
+          // You can also use "$(window).load(function() {"
+          $(function() {
+            // Slideshow 4
+            $("#slider3").responsiveSlides({
+              auto: true,
+              pager: true,
+              nav: false,
+              speed: 500,
+              namespace: "callbacks",
+              before: function() {
+                $(".events").append("<li>before event fired.</li>");
+              },
+              after: function() {
+                $(".events").append("<li>after event fired.</li>");
+              }
+            });
+          });
+        </script>
+        <div id="top" class="callbacks_container">
+          <ul class="rslides" id="slider3">
+            <li>
+              <div class="banner-info">
+                <h3>FRUIT CRUSH</h3>
+                <h4>HEALTHY DRINK FOR YOUR HEALTH</h4>
+                <p>
+                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                  accusantium doloremque laudantium, totam rem aperiam, eaque
+                  ipsa quae ab illo inventore veritatis et quasi architecto
+                  beatae vitae dicta sunt explicabo.
+                </p>
+                <a class="hvr-rectangle-out button" href="single.html"
+                  >READ MORE</a
+                >
+              </div>
+              <div class="clearfix"></div>
+            </li>
+            <li>
+              <div class="banner-info">
+                <h3>FRUIT CRUSH</h3>
+                <h4>WITH NATURAL INGREDIENTS</h4>
+                <p>
+                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                  accusantium doloremque laudantium, totam rem aperiam, eaque
+                  ipsa quae ab illo inventore veritatis et quasi architecto
+                  beatae vitae dicta sunt explicabo.
+                </p>
+                <a class="hvr-rectangle-out button" href="single.html"
+                  >READ MORE</a
+                >
+              </div>
+              <div class="clearfix"></div>
+            </li>
+            <li>
+              <div class="banner-info">
+                <h3>FRUIT CRUSH</h3>
+                <h4>CREATED BY NATURE, BLENDED</h4>
+                <p>
+                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                  accusantium doloremque laudantium, totam rem aperiam, eaque
+                  ipsa quae ab illo inventore veritatis et quasi architecto
+                  beatae vitae dicta sunt explicabo.
+                </p>
+                <a class="hvr-rectangle-out button" href="single.html"
+                  >READ MORE</a
+                >
+              </div>
+              <div class="clearfix"></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- //banner -->
+    <div class="copyrights">
+      Collect from <a href="http://www.cssmoban.com/"></a>
+    </div>
+    <!-- welcome -->
+    <div class="welcome">
+      <div class="container">
+        <div class="welcome-head">
+          <h3 class="tittle">WELCOME</h3>
+          <div class="wel-img mask text-center">
+            <a href="single.html" class="mask"
+              ><img class="img-responsive zoom-img" src="images/1.jpg" alt=""
+            /></a>
+          </div>
+          <h4>TEMPORIBUS AUTEM QUIBUSDAM ET AUT OFFICIIS DEBITIS AUT RERUM</h4>
+          <p>
+            Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
+            impedit quo minus id quod maxime placeat facere possimus, omnis
+            voluptas assumenda est, omnis dolor repellendus. Temporibus autem
+            quibusdam et aut officiis debitis aut rerum necessitatibus saepe.
+            Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
+            impedit quo minus id quod maxime placeat facere possimus, omnis
+            voluptas assumenda est, omnis dolor repellendus. Temporibus autem
+            quibusdam et aut officiis debitis aut rerum necessitatibus saepe.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- //welcome -->
+    <!-- specials -->
+    <div class="specials">
+      <div class="container">
+        <h3 class="tittle t-two">OUR SPECIALS</h3>
+        <div class="special-grids">
+          <div class="col-md-6 special-left l-grids">
+            <figure class="effect-bubba">
+              <img src="images/4.jpg" alt="" />
+              <figcaption>
+                <h4>FRUIT CRUSH</h4>
+                <p>
+                  In sit amet sapien eros Integer quibusdam et aut officiis
+                  debitis aut rerum in tincidunt labore et dolore magna aliqua
+                </p>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="col-md-6 special-right">
+            <div class="sp-wid">
+              <h4>WE SELECT ONLY THE HIGHEST QUALITY ORGANIC FRUITS</h4>
+              <p>
+                Nam libero tempore, cum soluta nobis est eligendi optio cumque
+                nihil impedit quo minus id quod maxime placeat facere possimus,
+                omnis voluptas assumenda est, omnis dolor repellendus.
+                Temporibus autem quibusdam et aut officiis debitis aut rerum
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 special-right l-left">
+            <div class="sp-wid l-wid">
+              <h4>WE SELECT ONLY THE HIGHEST QUALITY ORGANIC FRUITS</h4>
+              <p>
+                Nam libero tempore, cum soluta nobis est eligendi optio cumque
+                nihil impedit quo minus id quod maxime placeat facere possimus,
+                omnis voluptas assumenda est, omnis dolor repellendus.
+                Temporibus autem quibusdam et aut officiis debitis aut rerum
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 special-left l-right l-grids">
+            <figure class="effect-bubba">
+              <img src="images/3.jpg" alt="" />
+              <figcaption>
+                <h4>FRUIT CRUSH</h4>
+                <p>
+                  In sit amet sapien eros quibusdam et aut officiis debitis aut
+                  rerum Integer in tincidunt labore et dolore magna aliqua
+                </p>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    <!-- specials -->
+    <!-- featured events -->
+    <div class="events-bottom">
+      <div class="container">
+        <h3 class="tittle">FEATURED EVENTS</h3>
+
+        <div class="col-md-6 events-right">
+          <div class="events-right-gds">
+            <div class="services-bottom-grd-left">
+              <img src="images/apple.png" alt="" />
+              <div class="time-service"><p>05 / 03</p></div>
+            </div>
+            <div class="services-bottom-grd-right">
+              <h4>vel illum qui dolorem eum fug</h4>
+              <p>
+                To take a trivial example, which of us ever undertakes laborious
+                physical exercise, except to obtain some advantage from it
+                doloribus asperiores repellat.
+              </p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="events-right-gds">
+            <div class="services-bottom-grd-left">
+              <img src="images/apple.png" alt="" />
+              <div class="time-service"><p>07 / 04</p></div>
+            </div>
+            <div class="services-bottom-grd-right">
+              <h4>vel illum qui dolorem eum fug</h4>
+              <p>
+                To take a trivial example, which of us ever undertakes laborious
+                physical exercise, except to obtain some advantage from it
+                doloribus asperiores repellat.
+              </p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="events-right-gds">
+            <div class="services-bottom-grd-left">
+              <img src="images/apple.png" alt="" />
+              <div class="time-service"><p>05 / 05</p></div>
+            </div>
+            <div class="services-bottom-grd-right">
+              <h4>vel illum qui dolorem eum fug</h4>
+              <p>
+                To take a trivial example, which of us ever undertakes laborious
+                physical exercise, except to obtain some advantage from it
+                doloribus asperiores repellat.
+              </p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="col-md-6 events-left text-center">
+          <img src="images/2.jpg" alt="" />
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <!-- //featured events -->
+    <!-- footer -->
+    <div class="footer">
+      <div class="container">
+        <div class="footer-grids">
+          <div class="col-md-3 footer-grid">
+            <h4>ADDRESS</h4>
+            <ul>
+              <li>FRIUT CRUSH</li>
+              <li>4111 Deer Haven Drive</li>
+              <li>SC 29601</li>
+              <li>Hours: Mon-Fri 9am - 6pm</li>
+            </ul>
+          </div>
+          <div class="col-md-3 footer-grid">
+            <h4>GET IN TOUCH</h4>
+            <ul>
+              <li>Tel: +1 234-567-890</li>
+              <li>Fax: +1 646-216-9789</li>
+              <li>
+                Email:
+                <a href="mailto:info@example.com">info@yourdomain.com </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-3 footer-grid">
+            <h4>SUBSCRIBE</h4>
+            <form>
+              <input
+                type="email"
+                value="Enter your email"
+                onFocus="this.value = '';"
+                onBlur="if (this.value == '') {this.value = 'Enter your email';}"
+                required=""
+              />
+              <input type="submit" value=" " />
+            </form>
+          </div>
+          <div class="col-md-3 footer-grid">
+            <h2><a href="index.html">FRUIT CRUSH</a></h2>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    <!-- //footer -->
+
+    <div class="strip1"></div>
+    <!-- copy -->
+    <div class="copy-right">
+      <div class="container">
+        <p>
+          Copyright &copy; 2015.Company name All rights reserved.<a
+            target="_blank"
+            href="http://www.cssmoban.com/"
+            >&#x7F51;&#x9875;&#x6A21;&#x677F;</a
+          >
+        </p>
+      </div>
+    </div>
+    <!-- //copy -->
+    <!-- for bootstrap working -->
+    <script src="js/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+      var foo = 10 + "20";
+      console.log(0.1 + 0.2 == 0.3);
+    </script>
+    <a href="#" id="toTop" style="display: block;">
+      <span id="toTopHover" style="opacity: 1;"> </span
+    ></a>
+    <!-- //smooth scrolling -->
+  </body>
+</html>
