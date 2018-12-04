@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- 加入viewport，保证移动设备优先 -->
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<!-- 引入bootstrap全局css样式和css组件 -->
+	<!-- <link rel="stylesheet" href="../bootStrap-3.3.0/css/bootstrap.css"> -->
+	<!-- 由于BootStrap.js完全依赖JQuery，所以必须先引入JQuery -->
+	<script src="../jquery-3.0.0/jquery-3.0.0.js"></script>
+	<!-- 引入bootstrap JavaScript插件 -->
+	<script src="../bootStrap-3.3.0/js/bootStrap.js"></script>
+	<link rel="stylesheet" type='text/css' href="./ls.css">
+	
+</head>
+<body>
+	<div class="Quicksand">
+		<div class="header">
+			<div class="logo">
+				<img src="https://lsy.liushayun.com/Public/Resource/icons/logo.svg" alt="" width="120px">
+			</div>
+			<div class="list">
+				<span class="glyphicon glyphicon-tasks"></span>
+			</div>
+			<div class="menu">
+				<div class="title">
+					<span>流沙云</span>
+					<img class="gb" src="https://lsy.liushayun.com/Public/Resource/icons/guanbi.svg" alt="" width="30px" height="30px">
+				</div>
+				
+				<ul class="list-unstyled">
+					<li><a href="#">星期一</a></li>
+					<li><a href="#">星期二</a></li>
+					<li><a href="#">星期三</a></li>
+					<li><a href="#">星期四</a></li>
+					<li><a href="#">星期五</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+			<div class="cell first">
+				<video class="video visible-lg" loop autoplay="autoplay">
+			        <source src="https://oa6dz61c8.qnssl.com/back.mp4" type="video/mp4"><source>
+			        <source src="https://oa6dz61c8.qnssl.com/back.mp4" type="video/ogv"><source>
+			        <source src="https://oa6dz61c8.qnssl.com/back.mp4" type="video/webm"><source>
+		        </video>
+		        <div class="cover"></div>
+				<div class="content">
+					<p>更懂用户更懂创业者的</p>
+					<p>互联网产品解决方案服务平台</p>
+					<p>专注微信、互联网+ 功能开发与运营</p>
+					<span>选择服务</span>
+				</div>
+			</div>
+			<div class="cell second">
+				<video class="video visible-lg" loop autoplay="autoplay">
+					<source src="https://oa6dz61c8.qnssl.com/guanxi.mp4" type="video/mp4"><source>
+	            </video>
+	            <div class="cover"></div>
+				<div class="content">
+					<p>网站</p>
+					<p>PC网站与手机网站定制设计开发</p>
+					<span>选择服务</span>
+				</div>
+			</div>
+			<div class="cell third">
+				<div class="content">
+					<p>基于微信公众号的应用设计开发</p>
+					<span>选择服务</span>
+				</div>
+			</div>
+			<div class="cell fourth">
+				<div class="content">
+					<p>GO</p>
+					<span>选择服务</span>
+				</div>
+			</div>
+		</div>
+		<div class="page hidden-xs">
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+		<div class="footer">
+			<span class="arrow">
+				<span class="a1">
+					<span class="a2">◇</span>
+				</span>
+				<!-- <span class="glyphicon glyphicon-chevron-down"></span> -->
+			</span>
+		</div>
+	</div>
+</body>
+<script>
+	// 滚动页码，默认0为第一页
+	var currentPage = 0;//默认当前页为第一页
+	// 标志动画是否完成，该变量意义重大：没有弹出菜单的时候点击菜单按钮会出现菜单无法弹出bug，动画异步执行的结果。该标志用于判定是否取消菜单点击生效。
+	var isAnimationComplete = true;
+	//标志动画完成与否，没有完成动画不允许继续操作；该标志与isAnimationComplete作用相当，所不同的是它用于控制滚动动画
+	var isFinished = true;
+	// 滚动区间
+	var divs = document.getElementsByClassName('cell');
+	// 滚动父容器
+	var container = document.getElementsByClassName('container-fluid');
+	// 弹出菜单按钮
+	var list = document.getElementsByClassName('list')[0];
+	// 菜单
+	var menu = document.getElementsByClassName('menu')[0];
+	// 关闭按钮
+	var close = document.getElementsByClassName('gb')[0];
+	// 箭头
+	var arrow = document.getElementsByClassName('arrow')[0];
+
+	var win_Width = $(window).width();
+	var win_Height = $(window).height();
+	// list.style.left = window.innerWidth - 120 + 'px';
+	// 菜单单击事件监听，动画弹出菜单
+	list.addEventListener('click',showMenu,false);
+	// document单击事件，动画隐藏菜单
+	document.addEventListener('click',hideMenu,false);
+	// 关闭事件，动画隐藏menu
+	close.addEventListener('click',hideMenu,false);
+	// 箭头上下滚动事件
+	arrow.addEventListener('click',pageMoveByArrow,false);
+	// 菜单单击事件监听，为了阻止浏览器默认行为
+	menu.addEventListener('click',function(event){event.stopPropagation();},false);
+
+
+	// 设定滚动区间全屏
+	function layout(){
+		for(var i=0;i<divs.length;i++)
+		{
+			// JS写法
+			// divs[i].style.height = '300px';
+			// JQuery写法
+			var div = divs[i];
+			$(div).css({
+				// height: document.body.clientHeight
+				// height: window.innerHeight
+				height : win_Height
+			});
+		}
+	}
+	$(window).resize(function(event) {
+
+		win_Width = $(window).width()
+		win_Height = $(window).height();
+		layout();
+
+		if(menu.style.display == 'block')
+		{
+			var w_menu = 0;
+			if(win_Width <= 480){
+				w_menu  ='100%';
+			}
+			else if(win_Width > 480 && win_Width <= 768)
+			{
+				w_menu  ='300px';
+			}
+			else{
+				w_menu  ='500px';
+			}
+			if(!$('.menu').hasClass('menuAnimation')){
+				menu.classList.add('menuAnimation');
+			}
+			$('.menu').css({'width': w_menu});
+		}
+	});
+	window.onload = function () {
+		// IE下滚动
+		addEvent(document,'mousewheel',onMouseWheel);
+		// FF和Chrome下滚动
+		addEvent(document,'DOMMouseScroll',onMouseWheel);
+		// 为右侧翻页按钮添加事件
+		var p_li_s = document.querySelectorAll('.page ul li');
+		var m_li_s = document.querySelectorAll('.menu ul li');
+		for(var i=0;i<p_li_s.length;i++)
+		{
+			p_li_s[i].id = 'page' + i;
+			p_li_s[i].addEventListener('click',PageMove,false);
+		}
+		for(var i=0;i<m_li_s.length;i++)
+		{
+			m_li_s[i].addEventListener('mouseenter',itemMove,false);
+			m_li_s[i].addEventListener('mouseleave',itemMove,false);
+		}
+		layout();
+	} 
+	// 弹出菜单动画
+	function showMenu(event){
+		menu.style.display = 'block';
+		menu.classList.remove('menuAnimation');
+		var w_menu = 0;
+		if(win_Width <= 480){
+			w_menu  ='100%';
+		}
+		else if(win_Width > 480 && win_Width <= 768)
+		{
+			w_menu  ='300px';
+		}
+		else{
+			w_menu  ='500px';
+		}
+		$('.menu').animate(
+			{'width': w_menu},
+			'slow');
+		$('.menu').animate(
+			{'height': '100%'},
+			'slow',
+			function(){
+				$('.menu .title').show('slow');
+				$('.menu ul li').each(function(index, val) {
+					var a = val.firstChild;
+					$(val).show('slow',function(){
+						$(a).animate({'margin-left': 35}, 'fast');
+					});
+				});
+			}
+		);
+		// 阻止浏览器默认行为，否则会触发document的点击事件hideMenu，从而隐藏菜单
+		event.stopPropagation();
+	}
+	// 隐藏菜单动画
+	function hideMenu(){
+		// 用于判定菜单是否是出现状态，没有出现的话后面语句不生效
+		if(menu.style.display == '' || menu.style.display=='none')
+			return;
+		// 即使菜单弹出，但动画还没有执行完毕也不能执行后面的语句
+		if(!isAnimationComplete) return;
+		isAnimationComplete = false;
+		
+		$('.menu').animate(
+			{'height': '1%'},
+			'slow');
+		$('.menu').animate(
+			{'width': '0px'},
+			'slow',function(){
+				menu.style.display = 'none';
+				$('.menu .title').css({'display': 'none'});
+				$('.menu ul li').each(function(index, val) {
+					var a = val.firstChild;
+					$(a).css({'margin-left': 50});
+					$(val).css({'display':'none'});
+				});
+				isAnimationComplete = true;
+				
+			});
+	}
+
+	// IE,FF,Chrome添加滚动事件
+	function addEvent(obj,xEvent,fn) {
+		// IE，Chrome滚动事件
+	    if(obj.attachEvent){
+	    	obj.attachEvent('on'+xEvent,fn);
+	    }else{//FF滚动事件
+	    	obj.addEventListener(xEvent,fn,false);
+	    }
+	}
+	
+	// 翻页按钮状态变化
+	function pageChanged(){
+		var li_s = document.querySelectorAll('.page ul li');
+		for(var i=0;i<li_s.length;i++)
+		{
+			li_s[i].style.background = 'transparent';
+		}
+		li_s[currentPage-1].style.background = 'white';
+	}
+	// 这里不设定动画，动画在css中加入了transition
+	function itemMove(event){
+		var li = event.target;
+		var a = li.firstChild;
+		if(event.type == 'mouseenter')
+		{
+			a.style.marginLeft = '45px';
+		}
+		else
+			a.style.marginLeft = '35px';
+
+	}
+	// 翻页点击事件
+	function PageMove(event){
+		// 获取当前页码，这里的页码与CurrentPage有一些差别，因为实际的页码从1开始，我们程序为了方便处理让页码从0开始了。
+		var page = event.target.id;
+		page = page.substring(page.length-1,page.length);
+		page = Number(page) + 1;
+		// 判定滚动方向
+		var isDown = false;
+		if(page > currentPage)
+			isDown = true;
+		else
+			isDown = false;
+		// 滚动的当前页
+		currentPage = page;
+		// 翻转动画在css中添加了transition
+		if(currentPage == 4){
+			$('.arrow .a1').css({'transform': 'rotateX(180deg)'});
+		}
+		else{
+			$('.arrow .a1').css({'transform': 'rotateX(0deg)'});
+		}
+		// wheelAnimation(isDown);
+		wheelAnimation();
+
+	}
+	// 翻页点击事件
+	function pageMoveByArrow(event){
+
+		// 用于解决page 默认为0的问题
+		if(currentPage ==0)
+			currentPage += 2;
+		else
+			currentPage++;
+
+		if(currentPage > 4)	currentPage = 1;
+
+		// 翻转动画在css中添加了transition
+		if(currentPage == 4){
+			$('.arrow .a1').css({'transform': 'rotateX(180deg)'});
+		}
+		else{
+			$('.arrow .a1').css({'transform': 'rotateX(0deg)'});
+		}
+		// wheelAnimation(isDown);
+		wheelAnimation();
+
+	}
+	// 当滚轮事件发生时，执行onMouseWheel这个函数
+	function onMouseWheel(event) {
+		// 约定方向：isDown = true 向下，isDown = false 向上
+		// IE和Chrome，向下滚动wheelDelta为负，向上为正
+		// console.log(event.wheelDelta);
+		// FF，向下滚动detail为正，向上为负
+		// console.log(event.detail);
+
+		// 如果动画 正在执行则继续滚动无效，否则这会引发一些意外
+		if(!isFinished) return;
+		// a和b用于判定IE，Chrome，FF的滚动，和滚动方向
+		var a = !!event.wheelDelta && (event.wheelDelta > 0 ? false : true);
+		var b = !!event.detail && (event.detail > 0 ? true : false);
+
+		var isDown = a || b;
+		// 滚动到最后一页
+		if(isDown){
+			if(currentPage == 0)
+				currentPage+=2;
+			else
+				currentPage++;
+			if(currentPage > 4)	currentPage = 4;
+		}
+		else{//滚动到第一页
+			currentPage--;
+			if(currentPage < 1)	currentPage = 1;
+		}
+		// 翻转动画在css中添加了transition
+		if(currentPage == 4){
+			$('.arrow .a1').css({'transform': 'rotateX(180deg)'});
+		}
+		else{
+			$('.arrow .a1').css({'transform': 'rotateX(0deg)'});
+		}
+		// wheelAnimation(isDown);
+		wheelAnimation();
+	}
+
+	function wheelAnimation(isDown){
+		// 标志动画执行进入状态
+		isFinished = false;
+		// var height = window.innerHeight;
+
+		// 不判定方向的话有一个bug，向下滚动currentPage不该减1，点击情况是好的，滚动会有此问题.暂保留
+		$(container).offset($(container).animate
+			(
+				{top: -win_Height*(currentPage-1)},
+				'slow',
+				function callBack(){
+					// 改变翻页页码状态
+					pageChanged();
+					// 标志动画完毕
+					isFinished = true;
+				}
+			)
+		);
+	/*
+		// 向下
+		if(isDown){
+
+			$(container).offset($(container).animate
+				(
+					{top: -height*(currentPage-1)},
+					'slow',
+					function callBack(){
+						pageChanged();
+						isFinished = true;
+					}
+				)
+			);
+		}
+		else{//向上
+			
+			$(container).offset($(container).animate
+				(
+					{top: -height*(currentPage-1)},
+					'slow',
+					function callBack(){
+						pageChanged();
+						isFinished = true;
+					}
+				)
+			);
+		}
+	*/
+	}
+</script>
+</html>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="218" height="38" viewBox="0 0 218 38">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 40.005px;
+        fill: #fff;
+        font-family: "Noto Sans S Chinese";
+        font-weight: 700;
+      }
+    </style>
+  </defs>
+  <text id="流" class="cls-1" x="-1" y="34">流</text>
+  <text id="沙" class="cls-1" x="54" y="33">沙</text>
+  <text id="云" class="cls-1" x="105" y="33">云</text>
+</svg>
