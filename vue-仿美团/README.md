@@ -1,9 +1,7 @@
-# ASSETS
 
-**This directory is not required, you can delete it if you don't want to use it.**
+閲囩敤楗夸簡涔坋lement-ui妗嗘灦
+鏋勫缓椤甸潰锛岀畝娲侊紝缇庤
 
-This directory contains your un-compiled assets such as LESS, SASS, or JavaScript.
+鐪佸競鏁版嵁銆佹梾娓告暟鎹笌鍥藉缁熻涓�鑷达紝
+鐧诲綍娉ㄥ唽閭楠岃瘉
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/guide/assets#webpacked).
-更多资源Q
-891377154
